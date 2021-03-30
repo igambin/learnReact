@@ -4,8 +4,11 @@ const person = (props) =>  {
     let name = props.name;
     let age = props.age;
     return (
-        <p>The Person {name} and is {age} years old.</p>
-    );
-}
+        <div>
+            <p>The Person {name} and is {age} years old.</p>
+            <p>{props.children}</p>
+        </div>
+    )
+};
 
 export default person;
