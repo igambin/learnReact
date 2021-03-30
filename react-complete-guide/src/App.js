@@ -3,13 +3,28 @@ import './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
+  state = {
+    people: [
+      {name: 'Mark', age: 28},
+      {name: 'Maik', age: 27},
+      {name: 'Monk', age: 25}
+    ]
+  }
+
+  switchNameHandler = () => {
+    let arr = [...this.state.people.slice(1, this.state.people.length), this.state.people[0]];
+    console.log(arr);
+    this.setState({people: arr});    
+  };
+
   render() {
     return (
       <div className="App">
         <h1>Hi, this is Ingos first React App</h1>
-        <Person name="Mark" age="28"></Person>
-        <Person name="Mike" age="27">Hobbies<ul><li>Racing</li><li>Chess</li></ul></Person>
-        <Person name="Monk" age="25"></Person>
+        <button onClick={this.switchNameHandler}>Switch Name</button>
+        <Person name={this.state.people[0].name} age={this.state.people[0].age}></Person>
+        <Person name={this.state.people[1].name} age={this.state.people[1].age}></Person>
+        <Person name={this.state.people[2].name} age={this.state.people[2].age}></Person>
       </div>
     );
     // the jsx above will be compiled to the following line
