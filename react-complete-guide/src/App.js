@@ -30,10 +30,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hi, this is Ingos first React App</h1>
-        <button onClick={this.rotatePeopleHandler}>Switch Name</button>
-        <Person click={this.rotatePeopleHandler} name={this.state.people[0].name} age={this.state.people[0].age}></Person>
-        <Person click={this.rotatePeopleHandler} name={this.state.people[1].name} age={this.state.people[1].age}></Person>
-        <Person click={this.rotatePeopleHandler} name={this.state.people[2].name} age={this.state.people[2].age}></Person>
+        <button onClick={() => this.rotatePeopleHandler()}>Switch Name</button>
+        <Person click={(name) => this.rotatePeopleHandler(name)} name={this.state.people[0].name} age={this.state.people[0].age}></Person>
+        <Person click={(name) => this.rotatePeopleHandler(name)} name={this.state.people[1].name} age={this.state.people[1].age}></Person>
+        <Person click={(name) => this.rotatePeopleHandler(name)} name={this.state.people[2].name} age={this.state.people[2].age}></Person>
       </div>
     );
     // the jsx above will be compiled to the following line
