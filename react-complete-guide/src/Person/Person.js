@@ -5,7 +5,7 @@ const person = (props) =>  {
     let age = props.age;
     return (
         <div>
-            <p>The Person {name} and is {age} years old.</p>
+            <p>{name} is {age} years old.</p>
             <p>{props.children}</p>
         </div>
     )
