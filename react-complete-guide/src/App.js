@@ -11,17 +11,18 @@ class App extends Component {
     ]
   }
 
-  switchNameHandler = () => {
+  rotatePeopleHandler = () => {
     let arr = [...this.state.people.slice(1, this.state.people.length), this.state.people[0]];
-    console.log(arr);
-    this.setState({people: arr});    
+    this.setState(
+      {people: arr}
+      );    
   };
 
   render() {
     return (
       <div className="App">
         <h1>Hi, this is Ingos first React App</h1>
-        <button onClick={this.switchNameHandler}>Switch Name</button>
+        <button onClick={this.rotatePeopleHandler}>Rotate People</button>
         <Person name={this.state.people[0].name} age={this.state.people[0].age}></Person>
         <Person name={this.state.people[1].name} age={this.state.people[1].age}></Person>
         <Person name={this.state.people[2].name} age={this.state.people[2].age}></Person>
