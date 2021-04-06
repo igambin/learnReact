@@ -1,12 +1,14 @@
 .Person {
-
+  width: 200px;
+  border: 0px solid #eee;
+  box-shadow: 0 0 2px 3px #ccc;
+  margin: 10px;
+  padding: 10px;
+  float: left;
 }
 
 .Person input {
   width: 50px;
-  background-color: black;
-  color: white;
-  border: 1px solid silver ;
-  
-  
+  border: 0px solid silver ;
+  border-bottom: 1px solid black;
 }

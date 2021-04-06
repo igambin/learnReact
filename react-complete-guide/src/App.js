@@ -46,13 +46,23 @@ class App extends Component {
   };
 
   render() {
-    return (
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+
+  return (
       <div className="App">
         <h1>Hi, this is Ingos first React App</h1>
-        <button onClick={() => this.rotatePeopleHandler()}>Switch Name</button>
-        <Person click={this.rotatePeopleHandler} changed={this.switchNameHandler} personId={this.state.people[0].personId} name={this.state.people[0].name} age={this.state.people[0].age} clicked={this.state.people[0].clicked}></Person>
-        <Person click={this.rotatePeopleHandler} changed={this.switchNameHandler} personId={this.state.people[1].personId} name={this.state.people[1].name} age={this.state.people[1].age} clicked={this.state.people[1].clicked}></Person>
-        <Person click={this.rotatePeopleHandler} changed={this.switchNameHandler} personId={this.state.people[2].personId} name={this.state.people[2].name} age={this.state.people[2].age} clicked={this.state.people[2].clicked}></Person>
+        <button style={style} onClick={() => this.rotatePeopleHandler()}>Rotate Entries</button>
+        <div>
+          <Person click={this.rotatePeopleHandler} changed={this.switchNameHandler} personId={this.state.people[0].personId} name={this.state.people[0].name} age={this.state.people[0].age} clicked={this.state.people[0].clicked}></Person>
+          <Person click={this.rotatePeopleHandler} changed={this.switchNameHandler} personId={this.state.people[1].personId} name={this.state.people[1].name} age={this.state.people[1].age} clicked={this.state.people[1].clicked}></Person>
+          <Person click={this.rotatePeopleHandler} changed={this.switchNameHandler} personId={this.state.people[2].personId} name={this.state.people[2].name} age={this.state.people[2].age} clicked={this.state.people[2].clicked}></Person>
+        </div>
       </div>
     );
     // the jsx above will be compiled to the following line
