@@ -27,8 +27,22 @@ class App extends Component {
     console.log(this.state);
   };
 
-  switchNameHandler = (name) => {
-
+  switchNameHandler = (event) => {
+    let target = event.target;
+    let name = target.name;
+    let newname = target.value;
+    console.log("switchNameHandler triggered: " + name + " => " + newname);
+    if(name && newname) {
+      var cP = this.state.people.find(p => p.name === name);
+      if(cP) {
+        cP.name = newname;
+        this.setState(
+          {
+            people: this.state.people
+          });       
+      }
+    }
+    
   };
 
   render() {
@@ -36,9 +50,9 @@ class App extends Component {
       <div className="App">
         <h1>Hi, this is Ingos first React App</h1>
         <button onClick={() => this.rotatePeopleHandler()}>Switch Name</button>
-        <Person click={this.rotatePeopleHandler} name={this.state.people[0].name} age={this.state.people[0].age} clicked={this.state.people[0].clicked}></Person>
-        <Person click={this.rotatePeopleHandler} name={this.state.people[1].name} age={this.state.people[1].age} clicked={this.state.people[1].clicked}></Person>
-        <Person click={this.rotatePeopleHandler} name={this.state.people[2].name} age={this.state.people[2].age} clicked={this.state.people[2].clicked}></Person>
+        <Person click={this.rotatePeopleHandler} changed={this.switchNameHandler} name={this.state.people[0].name} age={this.state.people[0].age} clicked={this.state.people[0].clicked}></Person>
+        <Person click={this.rotatePeopleHandler} changed={this.switchNameHandler} name={this.state.people[1].name} age={this.state.people[1].age} clicked={this.state.people[1].clicked}></Person>
+        <Person click={this.rotatePeopleHandler} changed={this.switchNameHandler} name={this.state.people[2].name} age={this.state.people[2].age} clicked={this.state.people[2].clicked}></Person>
       </div>
     );
     // the jsx above will be compiled to the following line
