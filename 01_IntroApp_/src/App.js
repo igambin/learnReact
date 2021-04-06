@@ -65,8 +65,6 @@ class App extends Component {
         </div>
       </div>
     );
-    // the jsx above will be compiled to the following line
-    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, this is Ingos first React App'));
   }
 }
 
