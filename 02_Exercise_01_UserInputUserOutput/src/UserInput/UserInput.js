@@ -1,4 +1,5 @@
 import React from 'react';
+import './UserInput.css';
 
 const userInput = (props) => {
     let input = props.input;

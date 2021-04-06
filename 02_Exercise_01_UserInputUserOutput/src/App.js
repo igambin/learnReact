@@ -20,23 +20,30 @@ class App extends Component {
   };
 
   render() {
+
+    const style = {
+      
+    }
+
     return (
       <div className="App">
-        <UserInput 
-          dataEntered={this.dataEntered} 
+        <UserInput
+          dataEntered={this.dataEntered}
           input={this.state.username} />
-        <UserOutput 
-          p1={this.state.username}
-          p2="Hello1" />
-        <UserOutput 
-          p1={this.state.username} 
-          p2="Hello2" />
-        <UserOutput 
-          p1={this.state.username} 
-          p2="Hello3" />
-        <UserOutput 
-          p1={this.state.username}
-          p2="Hello4" />
+        <div>
+          <UserOutput
+            p1={this.state.username}
+            p2="Hello1" />
+          <UserOutput
+            p1={this.state.username}
+            p2="Hello2" />
+          <UserOutput
+            p1={this.state.username}
+            p2="Hello3" />
+          <UserOutput
+            p1={this.state.username}
+            p2="Hello4" />
+        </div>
       </div>
     );
   }

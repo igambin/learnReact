@@ -1,4 +1,5 @@
 import React from 'react';
+import './UserOutput.css';
 
 const userOutput = (props) => {
     let paragraph1 = props.p1;
