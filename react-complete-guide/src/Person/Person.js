@@ -6,7 +6,7 @@ const person = (props) =>  {
     let clicked = props.clicked;
     return (
         <div>
-            <p onClick={props.click.bind(this, name)}>{name} is {age} years old {clicked?"*":""}.</p>
+            <p onClick={props.click.bind(this, name)}>{name} is {age} years old {clicked?"*":""}</p>
             <p>{props.children}</p>
         </div>
     )

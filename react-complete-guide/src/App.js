@@ -12,11 +12,12 @@ class App extends Component {
     otherData: 'otherData'
   };
 
-  rotatePeopleHandler = (clickedRow) => {
+  rotatePeopleHandler = (clickedRowName) => {
+    console.log(clickedRowName + ' clicked!');
     let arr = [...this.state.people.slice(1, this.state.people.length), this.state.people[0]];
     arr.forEach(p => p.clicked = false);
-    var cP = arr.find(p => p.name === clickedRow);
-    if(clickedRow && cP){
+    var cP = arr.find(p => p.name === clickedRowName);
+    if(clickedRowName && cP){
       cP.clicked = true;
     }
     this.setState(
@@ -26,14 +27,18 @@ class App extends Component {
     console.log(this.state);
   };
 
+  switchNameHandler = (name) => {
+
+  };
+
   render() {
     return (
       <div className="App">
         <h1>Hi, this is Ingos first React App</h1>
         <button onClick={() => this.rotatePeopleHandler()}>Switch Name</button>
-        <Person click={(name) => this.rotatePeopleHandler(name)} name={this.state.people[0].name} age={this.state.people[0].age}></Person>
-        <Person click={(name) => this.rotatePeopleHandler(name)} name={this.state.people[1].name} age={this.state.people[1].age}></Person>
-        <Person click={(name) => this.rotatePeopleHandler(name)} name={this.state.people[2].name} age={this.state.people[2].age}></Person>
+        <Person click={this.rotatePeopleHandler} name={this.state.people[0].name} age={this.state.people[0].age} clicked={this.state.people[0].clicked}></Person>
+        <Person click={this.rotatePeopleHandler} name={this.state.people[1].name} age={this.state.people[1].age} clicked={this.state.people[1].clicked}></Person>
+        <Person click={this.rotatePeopleHandler} name={this.state.people[2].name} age={this.state.people[2].age} clicked={this.state.people[2].clicked}></Person>
       </div>
     );
     // the jsx above will be compiled to the following line
