@@ -1,8 +1,8 @@
 .Person {
   width: 200px;
-  border: 0px solid #eee;
-  box-shadow: 0 0 2px 3px #ccc;
-  margin: 10px;
+  background-color: whitesmoke;
+  box-shadow: 3px 3px 3px;margin: 10px;
+  border-radius: 5px;
   padding: 10px;
   float: left;
 }
@@ -10,5 +10,6 @@
 .Person input {
   width: 50px;
   border: 0px solid silver ;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid darkgray;  
+
 }
