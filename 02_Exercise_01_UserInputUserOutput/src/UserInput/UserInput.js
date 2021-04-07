@@ -8,7 +8,7 @@ const userInput = (props) => {
         <div className="UserInput">
             <input 
                 type="textbox" 
-                onChange={props.dataEntered.bind(this)}
+                onChange={props.dataEntered}
                 value={input} 
                 />
         </div>
