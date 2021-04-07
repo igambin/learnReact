@@ -20,11 +20,6 @@ class App extends Component {
   };
 
   render() {
-
-    const style = {
-      
-    }
-
     return (
       <div className="App">
         <UserInput
