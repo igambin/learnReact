@@ -67,6 +67,36 @@ class App extends Component {
       margin: '50px'
     };
 
+    let persons = null;
+
+    if(this.state.showPeople) {
+      persons = (
+        <div style={style2}>
+        <Person
+          click={this.rotatePeopleHandler}
+          changed={this.switchNameHandler}
+          personId={this.state.people[0].personId}
+          name={this.state.people[0].name}
+          age={this.state.people[0].age}
+          clicked={this.state.people[0].clicked} />
+        <Person
+          click={this.rotatePeopleHandler}
+          changed={this.switchNameHandler}
+          personId={this.state.people[1].personId}
+          name={this.state.people[1].name}
+          age={this.state.people[1].age}
+          clicked={this.state.people[1].clicked} />
+        <Person
+          click={this.rotatePeopleHandler}
+          changed={this.switchNameHandler}
+          personId={this.state.people[2].personId}
+          name={this.state.people[2].name}
+          age={this.state.people[2].age}
+          clicked={this.state.people[2].clicked} />
+      </div>
+      );
+    }
+
     return (
       <div className="App">
         <h1>Hi, this is Ingos first React App</h1>
@@ -80,29 +110,7 @@ class App extends Component {
           onClick={() => this.rotatePeopleHandler()}>
           Rotate Entries
         </button>
-            <div style={style2}>
-              <Person
-                click={this.rotatePeopleHandler}
-                changed={this.switchNameHandler}
-                personId={this.state.people[0].personId}
-                name={this.state.people[0].name}
-                age={this.state.people[0].age}
-                clicked={this.state.people[0].clicked} />
-              <Person
-                click={this.rotatePeopleHandler}
-                changed={this.switchNameHandler}
-                personId={this.state.people[1].personId}
-                name={this.state.people[1].name}
-                age={this.state.people[1].age}
-                clicked={this.state.people[1].clicked} />
-              <Person
-                click={this.rotatePeopleHandler}
-                changed={this.switchNameHandler}
-                personId={this.state.people[2].personId}
-                name={this.state.people[2].name}
-                age={this.state.people[2].age}
-                clicked={this.state.people[2].clicked} />
-            </div>
+        {persons}
       </div>
     );
   }
