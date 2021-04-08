@@ -30,7 +30,7 @@ class App extends Component {
 
   switchNameHandler = (event) => {
     let target = event.target;
-    let personId = target.name;
+    let personId = target.key;
     let newname = target.value;
     console.log("switchNameHandler triggered on Person '" + personId + "' => " + newname);
     if (personId && newname) {
@@ -51,7 +51,7 @@ class App extends Component {
       {
         showPeople: doShowPeople
       });
-      console.log(this.state);
+    console.log(this.state);
   };
 
   render() {
@@ -69,31 +69,22 @@ class App extends Component {
 
     let persons = null;
 
-    if(this.state.showPeople) {
+    if (this.state.showPeople) {
       persons = (
         <div style={style2}>
-        <Person
-          click={this.rotatePeopleHandler}
-          changed={this.switchNameHandler}
-          personId={this.state.people[0].personId}
-          name={this.state.people[0].name}
-          age={this.state.people[0].age}
-          clicked={this.state.people[0].clicked} />
-        <Person
-          click={this.rotatePeopleHandler}
-          changed={this.switchNameHandler}
-          personId={this.state.people[1].personId}
-          name={this.state.people[1].name}
-          age={this.state.people[1].age}
-          clicked={this.state.people[1].clicked} />
-        <Person
-          click={this.rotatePeopleHandler}
-          changed={this.switchNameHandler}
-          personId={this.state.people[2].personId}
-          name={this.state.people[2].name}
-          age={this.state.people[2].age}
-          clicked={this.state.people[2].clicked} />
-      </div>
+          {this.state.people.map(p => {
+            return (
+              <Person
+                click={this.rotatePeopleHandler}
+                changed={this.switchNameHandler}
+                key={p.personId}
+                personId={p.personId}
+                name={p.name}
+                age={p.age}
+                clicked={p.clicked} />
+            );
+          })}
+        </div>
       );
     }
 
@@ -103,7 +94,7 @@ class App extends Component {
         <button
           style={style}
           onClick={() => this.togglePeopleHandler()}>
-            Toggle 'ShowPeople'
+          Toggle 'ShowPeople'
           </button>
         <button
           style={style}
