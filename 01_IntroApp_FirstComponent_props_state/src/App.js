@@ -82,7 +82,9 @@ class App extends Component {
                 personId={p.personId}
                 name={p.name}
                 age={p.age}
-                clicked={p.clicked} />
+                clicked={p.clicked} 
+                key={p.personId}
+                />
             );
           })}
         </div>

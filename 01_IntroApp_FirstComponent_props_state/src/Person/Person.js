@@ -5,7 +5,6 @@ const person = (props) =>  {
     let personId = props.personId;
     let name = props.name;
     let age = props.age;
-    let clicked = props.clicked;
 
     return (
         <div className="Person">
