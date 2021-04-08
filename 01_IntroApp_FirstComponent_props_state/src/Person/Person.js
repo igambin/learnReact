@@ -12,7 +12,7 @@ const person = (props) =>  {
                 <input 
                     type="text" 
                     name={personId} 
-                    onChange={props.changed.bind(this)} value={name} 
+                    onChange={props.changed} value={name} 
                     /> is {age} years old
             </p>
             <button onClick={props.click}>Delete</button>

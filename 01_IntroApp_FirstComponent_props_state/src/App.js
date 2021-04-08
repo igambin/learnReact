@@ -13,18 +13,23 @@ class App extends Component {
     showPeople: false
   };
 
-  switchNameHandler = (event) => {
-    const target = event.target;
-    const personId = target.name;
-    const newname = target.value;
-    console.log("switchNameHandler triggered on Person '" + personId + "' => " + newname);
-    if (personId && newname) {
-      const cP = this.state.people.find(p => p.personId === personId);
-      if (cP) {
-        cP.name = newname;
+  switchNameHandler = (event, id) => {
+    const newname = event.target.value;
+    console.log("switchNameHandler triggered on Person '" + id + "' => " + newname);
+    if (id) {
+      // clone list
+      const persons = [...this.state.people];
+      const idx = persons.findIndex(p => p.personId === id);
+      if (idx >= 0) {
+
+        // clone person
+        const person = {...persons[idx]};
+        person.name = newname; // then modify person
+        persons[idx] = person; // then modify list
+
         this.setState(
           {
-            people: this.state.people
+            people:persons
           });
       }
     }
@@ -78,7 +83,7 @@ class App extends Component {
             return (
               <Person
                 click={() => this.deletePerson(idx)}
-                changed={this.switchNameHandler}
+                changed={(event) => this.switchNameHandler(event, p.personId)}
                 personId={p.personId}
                 name={p.name}
                 age={p.age}
