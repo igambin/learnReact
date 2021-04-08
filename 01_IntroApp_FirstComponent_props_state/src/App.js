@@ -5,36 +5,21 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     people: [
-      { personId: '1', name: 'Mark', age: 28, clicked: false },
-      { personId: '2', name: 'Maik', age: 27, clicked: false },
-      { personId: '3', name: 'Monk', age: 25, clicked: false }
+      { personId: '1', name: 'Mark', age: 28 },
+      { personId: '2', name: 'Maik', age: 27 },
+      { personId: '3', name: 'Monk', age: 25 }
     ],
     otherData: 'otherData',
     showPeople: false
   };
 
-  rotatePeopleHandler = (clickedPersonId) => {
-    console.log(clickedPersonId + ' clicked!');
-    let arr = [...this.state.people.slice(1, this.state.people.length), this.state.people[0]];
-    arr.forEach(p => p.clicked = false);
-    var cP = arr.find(p => p.personId === clickedPersonId);
-    if (clickedPersonId && cP) {
-      cP.clicked = true;
-    }
-    this.setState(
-      {
-        people: arr
-      });
-    console.log(this.state);
-  };
-
   switchNameHandler = (event) => {
-    let target = event.target;
-    let personId = target.key;
-    let newname = target.value;
+    const target = event.target;
+    const personId = target.name;
+    const newname = target.value;
     console.log("switchNameHandler triggered on Person '" + personId + "' => " + newname);
     if (personId && newname) {
-      var cP = this.state.people.find(p => p.personId === personId);
+      const cP = this.state.people.find(p => p.personId === personId);
       if (cP) {
         cP.name = newname;
         this.setState(
@@ -46,14 +31,31 @@ class App extends Component {
   };
 
   togglePeopleHandler = () => {
-    const doShowPeople = !this.state.showPeople;
     this.setState(
       {
-        showPeople: doShowPeople
+        showPeople: !this.state.showPeople
       });
+    console.log("togglePeople");
     console.log(this.state);
   };
 
+  deletePerson = (idx) => {
+    if(Number.isFinite(idx)) {
+      const dP = this.state.people[idx];
+      if(dP)
+        console.log("deletePerson triggered on Peron '" + dP.name + "'");
+        const newPeople = [...this.state.people];
+        newPeople.splice(idx, 1);
+        this.setState(
+          {
+            people: newPeople
+          }
+        );
+    }
+    console.log("deletePerson");
+    console.log(this.state);
+  }
+  
   render() {
     const style = {
       backgroundColor: 'white',
@@ -72,12 +74,11 @@ class App extends Component {
     if (this.state.showPeople) {
       persons = (
         <div style={style2}>
-          {this.state.people.map(p => {
+          {this.state.people.map((p, idx) => {
             return (
               <Person
-                click={this.rotatePeopleHandler}
+                click={() => this.deletePerson(idx)}
                 changed={this.switchNameHandler}
-                key={p.personId}
                 personId={p.personId}
                 name={p.name}
                 age={p.age}
@@ -96,11 +97,6 @@ class App extends Component {
           onClick={() => this.togglePeopleHandler()}>
           Toggle 'ShowPeople'
           </button>
-        <button
-          style={style}
-          onClick={() => this.rotatePeopleHandler()}>
-          Rotate Entries
-        </button>
         {persons}
       </div>
     );

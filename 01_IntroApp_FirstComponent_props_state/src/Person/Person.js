@@ -10,11 +10,13 @@ const person = (props) =>  {
     return (
         <div className="Person">
             <p>
-                <input type="text" name={personId} onChange={props.changed.bind(this)} value={name} />
-                <span onClick={props.click.bind(this, personId)}
-                > is {age} years old {clicked?"*":""}
-                </span>
+                <input 
+                    type="text" 
+                    name={personId} 
+                    onChange={props.changed.bind(this)} value={name} 
+                    /> is {age} years old
             </p>
+            <button onClick={props.click}>Delete</button>
         </div>
     )
 };
