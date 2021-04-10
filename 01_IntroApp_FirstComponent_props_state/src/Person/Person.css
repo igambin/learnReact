@@ -1,15 +1,21 @@
 .Person {
-  width: 200px;
-  background-color: whitesmoke;
-  box-shadow: 3px 3px 3px;margin: 10px;
-  border-radius: 5px;
-  padding: 10px;
-  float: left;
+    width: 200px;
+    background-color: whitesmoke;
+    box-shadow: 3px 3px 3px;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    float: left;
 }
 
-.Person input {
-  width: 50px;
-  border: 0px solid silver ;
-  border-bottom: 1px solid darkgray;  
+.PersonInput {
+    width: 50px;
+    border: 0px solid silver;
+    border-bottom: 1px solid darkgray;
+}
 
+@media (min-width: 470px) {
+    .Person {
+        width: 300px;
+    }
 }
