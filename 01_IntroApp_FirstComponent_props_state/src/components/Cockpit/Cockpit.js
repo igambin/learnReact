@@ -12,7 +12,7 @@ const Cockpit = (props) => {
   return (
     <div>
       <h1>
-        Hi, this is Ingos first React App
+        {props.appTitle}
       </h1>
       <button
         className={btnClass.join(' ')}
