@@ -1,24 +1,6 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import './App.css';
 import Person from './Person/Person';
-
-const ToggleButton = styled.button`
-  background-color: ${props => props.alt ? 'lightcoral' : 'lightgreen'};
-  font: inherit;
-  border: 1px solid blue;
-  padding: 8px;
-  cursor: pointer;
-  
-  &:hover {
-    background-color: ${props => props.alt ? 'red' : 'green'};
-    color: white;
-  }
-`;
-
-const PeopleContainer = styled.div`
-  margin: 50px;
-  `;
+import './App.css';
 
 class App extends Component {
   state = {
@@ -91,7 +73,7 @@ class App extends Component {
 
     if (this.state.showPeople) {
       persons = (
-        <PeopleContainer>
+        <div>
           {this.state.people.map((p, idx) => {
             return (
               <Person
@@ -105,7 +87,7 @@ class App extends Component {
               />
             );
           })}
-        </PeopleContainer>
+        </div>
       );
     }
 
@@ -121,11 +103,11 @@ class App extends Component {
       <div className="App">
         <h1>Hi, this is Ingos first React App</h1>
         <p className={classes.join(' ')}>It's running</p>
-        <ToggleButton
+        <button
           alt={this.state.showPeople}
           onClick={() => this.togglePeopleHandler()}>
           Toggle 'ShowPeople'
-        </ToggleButton>
+        </button>
         {persons}
       </div>
     );
