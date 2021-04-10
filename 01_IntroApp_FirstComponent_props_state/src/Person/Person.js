@@ -7,8 +7,14 @@ const person = (props) =>  {
     let name = props.name;
     let age = props.age;
 
+    const style = {
+        '@media(min-width: 400px)': {
+            width: '300px'
+        }
+    };
+
     return (
-        <div className="Person">
+        <div className="Person" style={style}>
             <p>
                 <input 
                     type="text" 

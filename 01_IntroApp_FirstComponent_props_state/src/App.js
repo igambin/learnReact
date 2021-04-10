@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -24,13 +24,13 @@ class App extends Component {
       if (idx >= 0) {
 
         // clone person
-        const person = {...persons[idx]};
+        const person = { ...persons[idx] };
         person.name = newname; // then modify person
         persons[idx] = person; // then modify list
 
         this.setState(
           {
-            people:persons
+            people: persons
           });
       }
     }
@@ -46,22 +46,22 @@ class App extends Component {
   };
 
   deletePerson = (idx) => {
-    if(Number.isFinite(idx)) {
+    if (Number.isFinite(idx)) {
       const dP = this.state.people[idx];
-      if(dP)
+      if (dP)
         console.log("deletePerson triggered on Peron '" + dP.name + "'");
-        const newPeople = [...this.state.people];
-        newPeople.splice(idx, 1);
-        this.setState(
-          {
-            people: newPeople
-          }
-        );
+      const newPeople = [...this.state.people];
+      newPeople.splice(idx, 1);
+      this.setState(
+        {
+          people: newPeople
+        }
+      );
     }
     console.log("deletePerson");
     console.log(this.state);
   }
-  
+
   render() {
     const style = {
       backgroundColor: 'lightgreen',
@@ -71,7 +71,7 @@ class App extends Component {
       cursor: 'pointer',
       ':hover': {
         backgroundColor: 'green',
-        color: 'white'       
+        color: 'white'
       }
     };
 
@@ -94,39 +94,41 @@ class App extends Component {
                 personId={p.personId}
                 name={p.name}
                 age={p.age}
-                clicked={p.clicked} 
+                clicked={p.clicked}
                 key={p.personId}
-                />
+              />
             );
           })}
         </div>
       );
-      style.backgroundColor='lightpink';
+      style.backgroundColor = 'lightpink';
       style[':hover'] = {
         backgroundColor: 'red',
         color: 'white'
       };
     }
 
-    if(this.state.people.length <= 2) {
+    if (this.state.people.length <= 2) {
       classes.push('lightcoral');
     }
 
-    if(this.state.people.length <= 1) {
+    if (this.state.people.length <= 1) {
       classes.push('bold');
     }
 
     return (
-      <div className="App">
-        <h1>Hi, this is Ingos first React App</h1>
-        <p className={classes.join(' ')}>It's running</p>
-        <button
-          style={style}
-          onClick={() => this.togglePeopleHandler()}>
-          Toggle 'ShowPeople'
+      <StyleRoot>
+        <div className="App">
+          <h1>Hi, this is Ingos first React App</h1>
+          <p className={classes.join(' ')}>It's running</p>
+          <button
+            style={style}
+            onClick={() => this.togglePeopleHandler()}>
+            Toggle 'ShowPeople'
           </button>
-        {persons}
-      </div>
+          {persons}
+        </div>
+      </StyleRoot>
     );
   }
 }
