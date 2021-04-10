@@ -2,18 +2,6 @@
   text-align: center;
 }
 
-.Lightcoral {
-  color: lightcoral;
-}
-
-.Bold {
-  font-weight: bold;
-}
-
-.PeopleDiv {
-  margin: 50px;
-}
-
 .Button {
   background-color: lightgreen;
   color: black;
@@ -34,4 +22,8 @@
 
 .Button.Red:hover {
   background-color: red;
+}
+
+.People {
+  margin: 50px;
 }

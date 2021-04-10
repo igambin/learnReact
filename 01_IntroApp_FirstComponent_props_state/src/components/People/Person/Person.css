@@ -1,0 +1,33 @@
+.Person {
+  width: 200px;
+  background-color: whitesmoke;
+  box-shadow: 3px 3px 3px;
+  margin: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  float: left;
+}
+
+.Input {
+  width: 50px;
+  border: 0px solid silver;
+  border-bottom: 1px solid darkgray;
+}
+
+.Left {
+  float: left;
+}
+
+.Label {
+  clear: both;
+  float: left;
+  width: 50px;
+  margin-right: 10px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.Button {
+  clear: both;
+  float: right;
+}
