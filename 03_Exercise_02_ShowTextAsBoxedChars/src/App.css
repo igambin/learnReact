@@ -1,0 +1,23 @@
+body {
+  background-color: beige;
+}
+
+.App {
+  text-align: center;
+}
+
+.header {
+  background: darkblue;
+}
+
+.input {
+  width: 95%;
+  margin: 10px auto;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.output {
+  margin: 10px;
+  text-align: center;
+}
