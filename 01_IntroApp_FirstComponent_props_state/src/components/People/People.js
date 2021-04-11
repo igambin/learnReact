@@ -31,7 +31,12 @@ class People extends Component {
     // DO: Decide whether to Continue or Not
     // DON'T: Cause Side-Effects
     console.log('[ People.js | Component-__-U2 ] shouldComponentUpdate');
-    return true || false;
+
+    if(nextProps.people !== this.props.people) {
+      return true;
+    } 
+    
+    return false;
   }
 
 

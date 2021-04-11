@@ -5,17 +5,17 @@
     border: 1px solid blue;
     padding: 8px;
     cursor: pointer;
-  }
-  
-  .Button:hover {
+}
+
+.Button:hover {
     background-color: green;
     color: white;
-  }
-  
-  .Button.Red {
+}
+
+.Button.Red {
     background-color: lightcoral;
-  }
-  
-  .Button.Red:hover {
+}
+
+.Button.Red:hover {
     background-color: red;
-  }
+}
