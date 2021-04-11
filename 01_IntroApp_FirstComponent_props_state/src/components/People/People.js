@@ -32,10 +32,10 @@ class People extends Component {
     // DON'T: Cause Side-Effects
     console.log('[ People.js | Component-__-U2 ] shouldComponentUpdate');
 
-    if(nextProps.people !== this.props.people) {
+    if(nextProps.people !== this.props.records) {
       return true;
     } 
-    
+
     return false;
   }
 
