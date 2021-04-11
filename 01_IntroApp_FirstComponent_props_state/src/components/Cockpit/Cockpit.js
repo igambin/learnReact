@@ -8,12 +8,13 @@ const Cockpit = (props) => {
     console.log('[ Cockpt.js | useEffect ]');
     // this would be an opportunity to maybe call HTTP-services
 
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       alert('Welcome to the Learning-App!');
     }, 1000);
 
     return () => {
       console.log('useEffect for cleanup after \'unmount\'');
+      clearTimeout(timer);
     }
   }, []); // [] basically simulates componentDidMount (runs just once)
 
