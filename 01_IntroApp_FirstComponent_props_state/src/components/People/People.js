@@ -9,7 +9,7 @@ class People extends Component {
     super(props);
     // DO: set up State
     // DON'T: Cause Side-Effects
-    console.log('[ People.js | Component-C1-__   ] constructor');
+    console.log('[ People.js | Component-C1-__ ] constructor');
     console.log(props);
   }
 
