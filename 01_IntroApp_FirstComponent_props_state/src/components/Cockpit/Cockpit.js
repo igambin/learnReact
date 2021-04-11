@@ -11,11 +11,20 @@ const Cockpit = (props) => {
     setTimeout(() => {
       alert('Welcome to the Learning-App!');
     }, 1000);
+
+    return () => {
+      console.log('useEffect for cleanup after \'unmount\'');
+    }
   }, []); // [] basically simulates componentDidMount (runs just once)
 
   // useEffect can be used multiple times
-  // useEffect(() => { ... });
-
+  useEffect( () => {
+    // is basically a combined componentDidMount/~DidUpdate-hook
+    console.log('[ Cockpt.js | 2nd useEffect ]');
+    return () => {
+      console.log('2nd useEffect for cleanup after \'unmount\'');
+    }
+  });
 
   let btnClass = [classes.Button];
   if(props.showPeople)

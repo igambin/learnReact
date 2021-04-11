@@ -22,7 +22,8 @@ class App extends Component {
       { personId: '3', name: 'Monk', age: 25 }
     ],
     otherData: 'otherData',
-    showPeople: false
+    showPeople: false,
+    showCockpit: true
   };
 
   // component creation lifecycle step 2
@@ -106,11 +107,14 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
-        <Cockpit
+        <button 
+          onClick={() => this.setState({showCockpit: !this.state.showCockpit})} 
+          >&nbsp;</button>
+        {this.state.showCockpit ? <Cockpit
           appTitle={this.props.appTitle}
           showPeople={this.state.showPeople}
           togglePeopleView={this.togglePeopleHandler}
-          />
+          /> : null }
         <div className={classes.People}>
           {peopleElement}
         </div>
