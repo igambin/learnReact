@@ -1,20 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classes from './Cockpit.css';
 
 const Cockpit = (props) => {
+  const toggleBtnRef = useRef(null);
 
   useEffect( () => {
     // is basically a combined componentDidMount/~DidUpdate-hook
     console.log('[ Cockpt.js | useEffect ]');
     // this would be an opportunity to maybe call HTTP-services
 
-    const timer = setTimeout(() => {
-      alert('Welcome to the Learning-App!');
-    }, 1000);
+    // const timer = setTimeout(() => {
+    //   alert('Welcome to the Learning-App!');
+    // }, 1000);
+
+    toggleBtnRef.current.click();
 
     return () => {
       console.log('useEffect for cleanup after \'unmount\'');
-      clearTimeout(timer);
+      // clearTimeout(timer);
     }
   }, []); // [] basically simulates componentDidMount (runs just once)
 
@@ -39,6 +42,7 @@ const Cockpit = (props) => {
         {props.appTitle}
       </h1>
       <button
+        ref={toggleBtnRef}
         className={btnClass.join(' ')}
         onClick={() => props.togglePeopleView()}>
         Toggle 'ShowPeople'

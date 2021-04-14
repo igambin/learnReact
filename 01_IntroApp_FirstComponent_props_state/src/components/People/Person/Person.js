@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import Auxiliary from '../../../hoc/Auxiliary';
 import classes from './Person.css';
+import withClass from '../../../hoc/WithClass';
+import PropTypes from 'prop-types';
 
 class Person extends Component {
   // component creation lifecycle step 1
@@ -10,6 +13,9 @@ class Person extends Component {
     // DON'T: Cause Side-Effects
     console.log('[ Person.js | Component-C1-__   ] constructor');
     console.log(props);
+
+    this.inputElementRef = React.createRef();
+
   }
 
 
@@ -41,10 +47,12 @@ class Person extends Component {
     // causes rendering of child components
     console.log('[ Person.js | Component-C3-U3 ] render (' + this.props.name + ')');
     return (
-      <div className={classes.Person}>
+      <Auxiliary>
         <p>
           <input
             className={classes.Input}
+//            ref={(inputEl) => {this.inputElement = inputEl}}
+            ref = {this.inputElementRef}
             type="text"
             name={this.props.personId}
             value={this.props.name}
@@ -52,7 +60,7 @@ class Person extends Component {
           /> is {this.props.age} years old
       </p>
         <button onClick={this.props.deletePerson}>Delete</button>
-      </div>
+      </Auxiliary>
     );
   }
 
@@ -63,6 +71,8 @@ class Person extends Component {
     // DON'T: Update State (triggers re-render)
     // NOTE: updating state is only allowed on promise callbacks
     console.log('[ Person.js | Component-C4-__ ] componentDidMount');
+//    this.inputElement.focus();
+    this.inputElementRef.current.focus();
   }
 
 
@@ -85,4 +95,13 @@ class Person extends Component {
 
 };
 
-export default Person;
+// consider using propTypes when other people are going to use your components
+Person.propTypes = {
+  deletePerson: PropTypes.func,
+  updatePerson: PropTypes.func,
+  name: PropTypes.string,
+  personId: PropTypes.string,
+  age: PropTypes.number
+};
+
+export default withClass(Person, classes.Person);

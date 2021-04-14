@@ -10,23 +10,23 @@ class App extends Component {
   // component creation lifecycle step 1
   constructor(props) {
     // always call super first to initialize parent component
-    super(props); 
+    super(props);
     // DO: set up State
     // DON'T: Cause Side-Effects
     console.log('[ App.js    | Component-C1-__   ] constructor');
     console.log(props);
-  }
 
-  state = {
-    people: [
-      { personId: '1', name: 'Mark', age: 28 },
-      { personId: '2', name: 'Maik', age: 27 },
-      { personId: '3', name: 'Monk', age: 25 }
-    ],
-    otherData: 'otherData',
-    showPeople: false,
-    showCockpit: true
-  };
+    this.state = {
+      people: [
+        { personId: '1', name: 'Mark', age: 28 },
+        { personId: '2', name: 'Maik', age: 27 },
+        { personId: '3', name: 'Monk', age: 25 }
+      ],
+      otherData: 'otherData',
+      showPeople: false,
+      showCockpit: true
+    };
+  }
 
   // component creation lifecycle step 2
   // component update   lifecycle step 1
@@ -56,7 +56,7 @@ class App extends Component {
   };
 
   updatePersonHandler = (event, id) => {
-    console.log('update Person (' + id + ', '+ event.target.value + ') triggered');
+    console.log('update Person (' + id + ', ' + event.target.value + ') triggered');
     const records = [...this.state.people];
     if (id) {
       const idx = records.findIndex(p => p.personId === id);
@@ -109,14 +109,14 @@ class App extends Component {
 
     return (
       <Auxiliary>
-        <button 
-          onClick={() => this.setState({showCockpit: !this.state.showCockpit})} 
-          >&nbsp;</button>
+        <button
+          onClick={() => this.setState({ showCockpit: !this.state.showCockpit })}
+        >&nbsp;</button>
         {this.state.showCockpit ? <Cockpit
           appTitle={this.props.appTitle}
           showPeople={this.state.showPeople}
           togglePeopleView={this.togglePeopleHandler}
-          /> : null }
+        /> : null}
         <div className={classes.People}>
           {peopleElement}
         </div>
@@ -133,7 +133,7 @@ class App extends Component {
     console.log('[ App.js    | Component-C4-__ ] componentDidMount');
   }
 
-  
+
   // component update   lifecycle step 4
   getSnapshotBeforeUpdate(prevProps, prevState) {
     // DO: Last-minute DOM ops
