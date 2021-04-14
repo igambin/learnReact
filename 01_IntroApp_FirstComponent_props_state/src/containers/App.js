@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Cockpit from '../components/Cockpit/Cockpit';
 import People from '../components/People/People';
 import classes from './App.css';
+import withClass from '../hoc/WithClass';
 
 class App extends Component {
 
@@ -150,7 +151,7 @@ class App extends Component {
 
 }
 
-export default App;
+export default withClass(App, classes.App);
 
 
 
