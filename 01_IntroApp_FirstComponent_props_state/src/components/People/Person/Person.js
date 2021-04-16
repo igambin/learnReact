@@ -3,6 +3,7 @@ import Aux from '../../../hoc/Auxiliary';
 import classes from './Person.css';
 import withClass from '../../../hoc/WithClass';
 import PropTypes from 'prop-types';
+import AuthContext from '../../../context/auth-context';
 
 class Person extends Component {
   // component creation lifecycle step 1
@@ -15,9 +16,9 @@ class Person extends Component {
     console.log(props);
 
     this.inputElementRef = React.createRef();
-
   }
 
+  static contextType = AuthContext;
 
   // component creation lifecycle step 2
   // component update   lifecycle step 1
@@ -48,6 +49,7 @@ class Person extends Component {
     console.log('[ Person.js | Component-C3-U3 ] render (' + this.props.name + ')');
     return (
       <Aux>
+          { this.context.authenticated ? <p>Logged In!</p> : null }
         <p>
           <input
             className={classes.Input}
@@ -58,7 +60,7 @@ class Person extends Component {
             value={this.props.name}
             onChange={this.props.updatePerson}
           /> is {this.props.age} years old
-      </p>
+        </p>
         <button onClick={this.props.deletePerson}>Delete</button>
       </Aux>
     );
@@ -73,6 +75,7 @@ class Person extends Component {
     console.log('[ Person.js | Component-C4-__ ] componentDidMount');
 //    this.inputElement.focus();
     this.inputElementRef.current.focus();
+    console.log('Logged in: ' + this.context.authenticated);
   }
 
 

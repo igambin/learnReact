@@ -1,8 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
+import AuthContext from '../../context/auth-context';
 import classes from './Cockpit.css';
 
 const Cockpit = (props) => {
   const toggleBtnRef = useRef(null);
+  const authContext = useContext(AuthContext);  
 
   useEffect( () => {
     // is basically a combined componentDidMount/~DidUpdate-hook
@@ -47,6 +49,16 @@ const Cockpit = (props) => {
         onClick={() => props.togglePeopleView()}>
         Toggle 'ShowPeople'
     </button>
+      { authContext.authenticated ? 
+        <button
+          className={[classes.Button, classes.Red].join(' ')}
+          onClick={authContext.logout}
+          >Log Out</button>
+      : <button
+          className={classes.Button}
+          onClick={authContext.login}
+          >Log In</button>
+      }
     </div>
   )
 };

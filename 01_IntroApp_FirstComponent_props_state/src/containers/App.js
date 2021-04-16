@@ -4,6 +4,7 @@ import People from '../components/People/People';
 import classes from './App.css';
 import withClass from '../hoc/WithClass';
 import Aux from '../hoc/Auxiliary';
+import AuthContext from '../context/auth-context';
 
 class App extends Component {
 
@@ -24,7 +25,8 @@ class App extends Component {
       ],
       otherData: 'otherData',
       showPeople: false,
-      showCockpit: true
+      showCockpit: true,
+      authenticated: false
     };
   }
 
@@ -78,6 +80,20 @@ class App extends Component {
     }
   }
 
+  loginHandler = () => {
+    console.log('login triggered');
+    this.setState( {
+      authenticated: true
+    });
+  };
+
+  logoutHandler = () => {
+    console.log('logout triggered');
+    this.setState( {
+      authenticated: false
+    });
+  };
+
 
   // component update   lifecycle step 2
   shouldComponentUpdate(nextProps, nextState) {
@@ -106,12 +122,24 @@ class App extends Component {
         />
       );
     }
-
+    
     return (
       <Aux>
         <button
-          onClick={() => this.setState({ showCockpit: !this.state.showCockpit })}
+          onClick={() => this.setState(
+            {
+             showCockpit: !this.state.showCockpit 
+            }
+          )}
         >&nbsp;</button>
+        <AuthContext.Provider
+          value={
+            {
+              authenticated: this.state.authenticated,
+              login: () => this.loginHandler(),
+              logout: () => this.logoutHandler()
+            }  
+          }>
         {this.state.showCockpit ? <Cockpit
           appTitle={this.props.appTitle}
           showPeople={this.state.showPeople}
@@ -120,6 +148,7 @@ class App extends Component {
         <div className={classes.People}>
           {peopleElement}
         </div>
+        </AuthContext.Provider>
       </Aux>
     );
   }
