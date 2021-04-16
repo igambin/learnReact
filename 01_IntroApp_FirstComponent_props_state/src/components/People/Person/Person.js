@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Auxiliary from '../../../hoc/Auxiliary';
+import Aux from '../../../hoc/Auxiliary';
 import classes from './Person.css';
 import withClass from '../../../hoc/WithClass';
 import PropTypes from 'prop-types';
@@ -47,7 +47,7 @@ class Person extends Component {
     // causes rendering of child components
     console.log('[ Person.js | Component-C3-U3 ] render (' + this.props.name + ')');
     return (
-      <Auxiliary>
+      <Aux>
         <p>
           <input
             className={classes.Input}
@@ -60,7 +60,7 @@ class Person extends Component {
           /> is {this.props.age} years old
       </p>
         <button onClick={this.props.deletePerson}>Delete</button>
-      </Auxiliary>
+      </Aux>
     );
   }
 

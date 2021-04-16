@@ -13,7 +13,7 @@ const Cockpit = (props) => {
     //   alert('Welcome to the Learning-App!');
     // }, 1000);
 
-    toggleBtnRef.current.click();
+    //toggleBtnRef.current.click();
 
     return () => {
       console.log('useEffect for cleanup after \'unmount\'');

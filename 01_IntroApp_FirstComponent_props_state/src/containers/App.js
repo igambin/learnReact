@@ -3,7 +3,7 @@ import Cockpit from '../components/Cockpit/Cockpit';
 import People from '../components/People/People';
 import classes from './App.css';
 import withClass from '../hoc/WithClass';
-import Auxiliary from '../hoc/Auxiliary';
+import Aux from '../hoc/Auxiliary';
 
 class App extends Component {
 
@@ -108,7 +108,7 @@ class App extends Component {
     }
 
     return (
-      <Auxiliary>
+      <Aux>
         <button
           onClick={() => this.setState({ showCockpit: !this.state.showCockpit })}
         >&nbsp;</button>
@@ -120,7 +120,7 @@ class App extends Component {
         <div className={classes.People}>
           {peopleElement}
         </div>
-      </Auxiliary>
+      </Aux>
     );
   }
 
