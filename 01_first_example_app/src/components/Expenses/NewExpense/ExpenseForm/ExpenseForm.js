@@ -21,6 +21,9 @@ const ExpenseForm = (props) => {
       paid: false
     };
     props.onAddItem(newExpense);
+    setTitle('');
+    setAmount(0);
+    setDate('');
   };
 
   return (
