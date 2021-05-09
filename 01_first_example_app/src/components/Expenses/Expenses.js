@@ -12,6 +12,7 @@ const Expenses = (props) => {
           key={ex.id} 
           item={ex}
           click={props.onPayItem}
+          delete={props.onDeleteItem}
           />
       ))}
     </Card>

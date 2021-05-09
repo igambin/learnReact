@@ -20,7 +20,10 @@ const ExpenseItem = (props) => {
                 <div className={priceClasses.join(' ')}>
                   {amount.toFixed(2)} €
                 </div>
-                <button className={classes.payLabel} onClick={() => props.click(props.item.id)}>{payLabel}</button>
+                <div>
+                  <button className={classes.payLabel} onClick={() => props.click(props.item.id)}>{payLabel}</button><br/>
+                  <button className={classes.payLabel} onClick={() => props.delete(props.item.id)}>Delete</button>
+                </div>
             </div>
         </Card>
     );

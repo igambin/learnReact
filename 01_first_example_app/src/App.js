@@ -54,6 +54,11 @@ const App = () => {
     setExpenses(edited);
   };
 
+  const dropItemHandler = (id) => {
+    const edited = [...expenses.filter(e => e.id !== id)];
+    setExpenses(edited);    
+  }
+
 
   return (
     <div>
@@ -63,6 +68,7 @@ const App = () => {
       <Expenses 
         items={expenses}
         onPayItem={payHandler}
+        onDeleteItem={dropItemHandler}
         />
     </div>
   );

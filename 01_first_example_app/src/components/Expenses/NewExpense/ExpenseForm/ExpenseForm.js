@@ -8,10 +8,7 @@ const ExpenseForm = (props) => {
   const [date, setDate] = useState('');
 
   const onChangedHandler = (e, setter) => {
-    console.log(e);
-    console.log(e.target.value);
-    const value = e.target.value;
-    setter(e.target.value);
+    setter((prevState => e.target.value));
   };
 
   const onAddItemHandler = () => {
@@ -19,7 +16,7 @@ const ExpenseForm = (props) => {
     const newExpense = {
       id: null,
       title: title,
-      amount: parseInt(amount),
+      amount: parseFloat(amount),
       date: new Date(date),
       paid: false
     };
