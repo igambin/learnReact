@@ -38,25 +38,31 @@ const App = () => {
   ]);
 
   const payHandler = (id) => {
-    const edited = [...expenses];
-    const idx = edited.findIndex(e => e.id === id);
-    edited[idx].paid = !edited[idx].paid;
-    setExpenses(edited);
+    setExpenses(prevState => {
+      const edited = [...prevState];
+      const idx = edited.findIndex(e => e.id === id);
+      edited[idx].paid = !edited[idx].paid;
+      return edited;
+    });
   };
 
   const addItemHandler = (newExpense) => {
     console.log("AddItem", newExpense);
-    const edited = [...expenses];
-    const newId = Math.max.apply(Math, edited.map(function(o) { return o.id; })) + 1 ;
-    const newItem = {...newExpense};
-    newItem.id = newId;
-    edited.push(newItem);
-    setExpenses(edited);
+    setExpenses(prevState => {
+      const edited = [...prevState];
+      const newId = Math.max.apply(Math, edited.map(function(o) { return o.id; })) + 1 ;
+      const newItem = {...newExpense};
+      newItem.id = newId;
+      edited.push(newItem);
+      return edited;
+    });
   };
 
   const dropItemHandler = (id) => {
-    const edited = [...expenses.filter(e => e.id !== id)];
-    setExpenses(edited);    
+    setExpenses(prevState => {
+      const edited = [...expenses.filter(e => e.id !== id)];
+      return edited
+    });    
   }
 
 
