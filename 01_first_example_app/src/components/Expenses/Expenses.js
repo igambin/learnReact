@@ -1,18 +1,20 @@
-import React from "react";
+import React from 'react';
+import Card from '../UI/Card';
 import ExpenseItem from './ExpenseItem/ExpenseItem';
 import classes from "./Expenses.css";
 
 const Expenses = (props) => {
+  
   return (
-    <div className={classes.Expenses}>
-    {props.items.map(ex => (
-      <ExpenseItem 
-        key={ex.id}
-        date={ex.date}
-        title={ex.title}
-        amount={ex.amount} />
-    ))}
-    </div>
+    <Card className={classes.Expenses}>
+      {props.items.map(ex => (
+        <ExpenseItem  
+          key={ex.id} 
+          item={ex}
+          click={props.onPayItem}
+          />
+      ))}
+    </Card>
   );
 };
 

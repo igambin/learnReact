@@ -11,16 +11,16 @@
     justify-content: center;
   }
   
-  .CalendarDay .Month {
+  .CalendarDay > .Month {
     font-size: 0.75rem;
     font-weight: bold;
   }
   
-  .CalendarDay .Year {
+  .CalendarDay > .Year {
     font-size: 0.75rem;
   }
 
-  .CalendarDay .Day {
+  .CalendarDay > .Day {
     font-size: 1.5rem;
     font-weight: bold;
   }

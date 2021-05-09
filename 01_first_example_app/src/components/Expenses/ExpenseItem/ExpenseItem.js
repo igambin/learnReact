@@ -1,20 +1,29 @@
 import React from 'react';
 import CalendarDay from './CalenderDay/CalendarDay';
+import Card from '../../UI/Card';
 import classes from './ExpenseItem.css';
 
 const ExpenseItem = (props) => {
-   
-    return (
-        <div className={classes.expenseItem}>
-            <CalendarDay date={props.date} />
-            <div className={classes.expenseItem__description}>
-                <h2>{props.title}</h2>
-                <div className={classes.expenseItem__price}>{props.amount.toFixed(2)} €</div>
-              </div>
-        </div>
-        
-    );
+    // prep output
+    const priceClasses = [classes.expenseItem__price];
+    if(props.item.paid) {
+      priceClasses.push(classes.paid);
+    };
+    const amount = props.item.amount;
+    const payLabel = props.item.paid === true ? "Unmark" : "Mark";
 
+    return (
+        <Card className={classes.expenseItem}>
+            <CalendarDay date={props.item.date} />
+            <div className={classes.expenseItem__description}>
+                <h2>{props.item.title}</h2>
+                <div className={priceClasses.join(' ')}>
+                  {amount.toFixed(2)} €
+                </div>
+                <button className={classes.payLabel} onClick={() => props.click(props.item.id)}>{payLabel}</button>
+            </div>
+        </Card>
+    );
 }
 
 export default ExpenseItem;

@@ -2,10 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     padding: 0.5rem;
     margin: 1rem 0;
-    border-radius: 12px;
     background-color: #4b4b4b;
   }
   
@@ -38,6 +36,10 @@
     padding: 0.5rem;
     border-radius: 12px;
   }
+
+  .paid {
+    background-color: darkgreen !important;
+  }
   
   @media (min-width: 580px) {
     .expenseItem__description {
@@ -56,3 +58,7 @@
       padding: 0.5rem 1.5rem;
     }
   }
+
+.payLabel {
+  width: 80px;
+}
