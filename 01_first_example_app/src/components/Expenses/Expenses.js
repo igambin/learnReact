@@ -1,10 +1,10 @@
 import React from "react";
 import ExpenseItem from './ExpenseItem/ExpenseItem';
-import "./Expenses.css";
+import classes from "./Expenses.css";
 
 const Expenses = (props) => {
   return (
-    <div className='Expenses'>
+    <div className={classes.Expenses}>
     {props.items.map(ex => (
       <ExpenseItem 
         key={ex.id}

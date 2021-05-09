@@ -1,5 +1,5 @@
 import React from 'react';
-import './CalendarDay.css';
+import classes from './CalendarDay.css';
 
 const CalendarDay = (props) => {
 
@@ -8,10 +8,10 @@ const CalendarDay = (props) => {
     const year = props.date.getFullYear();
 
     return (
-        <div className='CalendarDay'>
-            <div className='CalenderDay Month'>{month}</div>
-            <div className='CalenderDay Year'>{year}</div>
-            <div className='CalenderDay Day'>{day}</div>
+        <div className={classes.CalendarDay}>
+            <div className={classes.CalenderDay+' '+classes.Month}>{month}</div>
+            <div className={classes.CalenderDay+' '+classes.Year}>{year}</div>
+            <div className={classes.CalenderDay+' '+classes.Day}>{day}</div>
         </div>
     );
 };
