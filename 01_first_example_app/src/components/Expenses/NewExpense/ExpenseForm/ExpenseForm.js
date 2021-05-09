@@ -11,8 +11,8 @@ const ExpenseForm = (props) => {
     setter((prevState => e.target.value));
   };
 
-  const onAddItemHandler = () => {
-
+  const submitHandler = (event) => {
+    event.preventDefault();
     const newExpense = {
       id: null,
       title: title,
@@ -24,7 +24,7 @@ const ExpenseForm = (props) => {
   };
 
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className={classes.NewExpense__controls}>
         <div className={classes.NewExpense__control}>
           <label>Title</label>
@@ -49,7 +49,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className={classes.NewExpense__actions}>
-        <button type="button" onClick={onAddItemHandler}>Add Expense</button>
+        <button type="submit">Add Expense</button>
       </div>
     </form>
   );
