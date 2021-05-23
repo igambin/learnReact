@@ -11,28 +11,56 @@ const App = () => {
       id: '1', 
       title: 'Car Insurance', 
       amount: 294.76,
-      date: new Date(2021, 2, 28),
+      date: new Date("2021-2-28"),
       paid: false
     },
     { 
       id: '2', 
       title: 'Rent', 
       amount: 564.5, 
-      date: new Date(2021, 3, 1),
+      date: new Date("2021-3-1"),
       paid: false
     },
     { 
       id: '3', 
       title: 'Food', 
       amount: 54.35, 
-      date: new Date(2021, 1, 20),
+      date: new Date("2021-1-20"),
       paid: false
     },
     {
       id: '4',
       title: 'Toilet Paper', 
       amount: 6.99, 
-      date: new Date(2021, 2, 25),
+      date: new Date("2021-2-25"),
+      paid: false
+    },
+    { 
+      id: '5', 
+      title: 'Rent (expected)', 
+      amount: 599.5, 
+      date: new Date("2022-3-1"),
+      paid: false
+    },
+    { 
+      id: '6', 
+      title: 'Food', 
+      amount: 55.65, 
+      date: new Date("2021-1-5"),
+      paid: false
+    },
+    { 
+      id: '7', 
+      title: 'Food', 
+      amount: 99.75, 
+      date: new Date("2020-12-1"),
+      paid: false
+    },
+    { 
+      id: '8', 
+      title: 'Food', 
+      amount: 54.35, 
+      date: new Date("2020-11-20"),
       paid: false
     }
   ]);
@@ -49,12 +77,9 @@ const App = () => {
   const addItemHandler = (newExpense) => {
     console.log("AddItem", newExpense);
     setExpenses(prevState => {
-      const edited = [...prevState];
-      const newId = Math.max.apply(Math, edited.map(function(o) { return o.id; })) + 1 ;
-      const newItem = {...newExpense};
-      newItem.id = newId;
-      edited.push(newItem);
-      return edited;
+      const newId = Math.max.apply(Math, prevState.map(function(o) { return o.id; })) + 1 ;
+      newExpense.id = newId;
+      return [newExpense, ...prevState];
     });
   };
 
