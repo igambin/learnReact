@@ -90,12 +90,11 @@ const App = () => {
     });    
   }
 
-
   return (
     <div>
       <NewExpense 
         onAddItem={addItemHandler}
-        />
+      />
       <Expenses 
         items={expenses}
         onPayItem={payHandler}

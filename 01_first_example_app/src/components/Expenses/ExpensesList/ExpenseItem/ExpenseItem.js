@@ -1,6 +1,6 @@
 import React from 'react';
 import CalendarDay from './CalenderDay/CalendarDay';
-import Card from '../../UI/Card';
+import Card from '../../../UI/Card';
 import classes from './ExpenseItem.css';
 
 const ExpenseItem = (props) => {
@@ -13,6 +13,7 @@ const ExpenseItem = (props) => {
     const payLabel = props.item.paid === true ? "Unmark" : "Mark";
 
     return (
+      <li>
         <Card className={classes.expenseItem}>
             <CalendarDay date={props.item.date} />
             <div className={classes.expenseItem__description}>
@@ -26,6 +27,7 @@ const ExpenseItem = (props) => {
                 </div>
             </div>
         </Card>
+      </li>
     );
 }
 
