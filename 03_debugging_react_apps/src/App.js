@@ -13,7 +13,8 @@ const App = () => {
   const addGoalHandler = enteredText => {
     setCourseGoals(prevGoals => {
       const updatedGoals = [...prevGoals];
-      updatedGoals.unshift({ text: enteredText, id: 'goal1' });
+      const ids = updatedGoals.map(g => parseInt(g.id.substr(1))).sort((a, b) => a < b ? 1 : a > b ? -1 : 0);
+      updatedGoals.unshift({ text: enteredText, id: `g${ids[0]+1 || 0}`});
       return updatedGoals;
     });
   };
@@ -36,14 +37,14 @@ const App = () => {
   }
 
   return (
-
+    <div>
       <section id="goal-form">
         <CourseInput onAddGoal={addGoalHandler} />
       </section>
       <section id="goals">
         {content}
       </section>
-
+    </div>
   );
 };
 
