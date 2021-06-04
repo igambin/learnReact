@@ -13,7 +13,7 @@ function App() {
     if (storedUserLoggedInInformation === '1') {
       setIsLoggedIn(true);
     }
-  }, []);
+  }, [/* an empt array means, this is only run once, since no dependenies are specified */]);
 
   const loginHandler = (email, password) => {
     // We should of course check email and password
