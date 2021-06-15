@@ -1,7 +1,23 @@
+import React, { useContext } from 'react';import CartContext from '../../store/CartContext';
+import { EuroFormatter } from '../../store/Util';
 import classes from './CartItem.module.css';
 
 const CartItem = (props) => {
-  const price = `$${props.price.toFixed(2)}`;
+  const cartContext = useContext(CartContext);
+
+  const updateItem = (x) => {
+    cartContext.updateItem(
+      {
+        id: props.id,
+        amount: x
+      });
+  }
+
+  const removeItem = (id) => {
+    cartContext.clearItems(id);
+  }
+
+  const price = EuroFormatter.format(props.price);
 
   return (
     <li className={classes['cart-item']}>
@@ -13,8 +29,9 @@ const CartItem = (props) => {
         </div>
       </div>
       <div className={classes.actions}>
-        <button onClick={props.onRemove}>−</button>
-        <button onClick={props.onAdd}>+</button>
+        <button onClick={() => updateItem(-1)}>−</button>
+        <button onClick={() => updateItem(1)}>+</button>
+        <button onClick={() => removeItem(props.id)}>X</button>
       </div>
     </li>
   );

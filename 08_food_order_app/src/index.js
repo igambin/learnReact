@@ -3,5 +3,6 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 import App from './App';
+import { CartContextProvider } from './store/CartContext';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<CartContextProvider><App /></CartContextProvider>, document.getElementById('root'));
