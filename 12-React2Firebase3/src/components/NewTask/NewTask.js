@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useHttp from "../../hooks/use-http";
 
 import Section from "../UI/Section";
@@ -7,13 +6,13 @@ import TaskForm from "./TaskForm";
 const NewTask = (props) => {
   const { isLoading, error, sendRequest: sendCreateTaskRequest } = useHttp();
 
-  const enterTaskHandler = async (taskText) => {
-    const createTaskHandler = (data) => {
-      const generatedId = data.name; // firebase-specific => "name" contains generated id
-      const createdTask = { id: generatedId, text: taskText };
-      props.onAddTask(createdTask);
-    };
+  const createTaskHandler = (taskText, taskData) => {
+    const generatedId = taskData.name; // firebase-specific => "name" contains generated id
+    const createdTask = { id: generatedId, text: taskText };
+    props.onAddTask(createdTask);
+  };
 
+  const enterTaskHandler = async (taskText) => {
     sendCreateTaskRequest(
       {
         url: "https://myreactlearning-8430a-default-rtdb.europe-west1.firebasedatabase.app/tasks.json",
@@ -23,7 +22,7 @@ const NewTask = (props) => {
           "Content-Type": "application/json",
         },
       },
-      createTaskHandler
+      createTaskHandler.bind(null, taskText)
     );
   };
 
