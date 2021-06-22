@@ -52,7 +52,7 @@ const SimpleInput = (props) => {
 
   return (
     <form onSubmit={formSubmissionHandler}>
-      <div className={`form-control ${nameInputIsInvalid && "invalid"}`}>
+      <div className={`form-control ${nameInputIsInvalid ? "invalid" : ""}`}>
         <label htmlFor="name">Your Name</label>
         <input
           value={enteredName}
@@ -65,7 +65,7 @@ const SimpleInput = (props) => {
           <p className="error-text">Name must not be empty.</p>
         )}
       </div>
-      <div className={`form-control ${emailInputIsInValid && "invalid"}`}>
+      <div className={`form-control ${emailInputIsInValid ? "invalid" : ""}`}>
         <label htmlFor="email">Your EMail address</label>
         <input
           value={enteredEmail}
@@ -79,7 +79,10 @@ const SimpleInput = (props) => {
         )}
       </div>
       <div className="form-actions">
-        <button className={!formIsValid && "invalid"} disabled={!formIsValid}>
+        <button
+          className={!formIsValid ? "invalid" : ""}
+          disabled={!formIsValid}
+        >
           Submit
         </button>
       </div>
