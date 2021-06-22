@@ -1,55 +1,44 @@
-import React from 'react';
-import MealItem from './MealItem';
-import classes from './AvailableMeals.module.css';
-import Card from '../UI/Card';
-
-const DUMMY_MEALS = [
-  {
-    id: '1',
-    name: 'Sushi',
-    description: 'Finest fish and veggies',
-    price: 22.99,
-  },
-  {
-    id: '2',
-    name: 'Schnitzel',
-    description: 'A german specialty!',
-    price: 16.5,
-  },
-  {
-    id: '3',
-    name: 'Barbecue Burger',
-    description: 'American, raw, meaty',
-    price: 12.99,
-  },
-  {
-    id: '4',
-    name: 'Green Bowl',
-    description: 'Healthy...and green...',
-    price: 18.99,
-  },
-];
+import React from "react";
+import MealItem from "./MealItem";
+import classes from "./AvailableMeals.module.css";
+import Card from "../UI/Card";
 
 const AvailableMeals = (props) => {
+  console.log(props);
+  let content = <p>data not available</p>;
 
-  const meals = DUMMY_MEALS.map(meal => 
-    (
-      <MealItem 
+  if (props.meals.length > 0) {
+    const meallist = props.meals.map((meal) => (
+      <MealItem
         key={meal.id}
         id={meal.id}
-        name={meal.name} 
+        name={meal.name}
         desc={meal.description}
         price={meal.price}
-        />
+      />
     ));
+    content = <ul>{meallist}</ul>;
+  }
+
+  if (props.error) {
+    content = (
+      <p className={classes.error}>
+        Failed to load meals, please contact the ReactMeals-Service. Maybe just
+        &nbsp;
+        <button className={classes.tryagain} onClick={props.onFetch}>
+          try again...
+        </button>
+      </p>
+    );
+  }
+
+  if (props.loading) {
+    content = <p>'Loading Meals ...'</p>;
+  }
 
   return (
     <section className={classes.meals}>
-      <Card>
-        <ul>
-          {meals}
-        </ul>
-      </Card>
+      <Card>{content}</Card>
     </section>
   );
 };
