@@ -30,21 +30,18 @@ const BasicForm = (props) => {
     "has to be valid!"
   );
 
-  const formIsValid =
-    firstNameInput.isValid && lastNameInput.isValid && emailInput.isValid;
+  const inputs = [firstNameInput, lastNameInput, emailInput];
+
+  const formIsValid = inputs.every((i) => i.isValid);
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
     if (!formIsValid) return;
 
-    console.log(
-      [firstNameInput, lastNameInput, emailInput].map((i) => i.value).join(", ")
-    );
+    console.log(inputs.map((i) => i.value).join(", "));
 
-    firstNameInput.reset();
-    lastNameInput.reset();
-    emailInput.reset();
+    inputs.forEach((i) => i.reset());
   };
 
   return (
