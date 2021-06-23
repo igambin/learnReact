@@ -4,7 +4,6 @@ import classes from "./AvailableMeals.module.css";
 import Card from "../UI/Card";
 
 const AvailableMeals = (props) => {
-  console.log(props);
   let content = <p>data not available</p>;
 
   if (props.meals.length > 0) {
@@ -28,6 +27,7 @@ const AvailableMeals = (props) => {
         <button className={classes.tryagain} onClick={props.onFetch}>
           try again...
         </button>
+        {props.error && <p>{props.error}</p>}
       </p>
     );
   }

@@ -30,8 +30,6 @@ const Meals = (props) => {
     );
   }, [fetchMeals]);
 
-  console.log(isLoading, error);
-
   return (
     <Fragment>
       <MealsSummary />
