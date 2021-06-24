@@ -9,6 +9,7 @@ const Cart = (props) => {
 
   const cartItemsContent = cartItems.map((c) => (
     <CartItem
+      key={c.id}
       item={{
         id: c.id,
         title: c.title,
